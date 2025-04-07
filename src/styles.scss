@@ -1,1 +1,223 @@
-/* You can add global styles to this file, and also import other style files */
+@use './styles/variables' as *;
+@use 'sass:color';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* Theme Variables */
+:root {
+  --background: #{$background-light};
+  --background-alt: white;
+  --card-background: white;
+  --text-primary: #{$text-dark};
+  --text-secondary: #{$text-muted};
+  --accent: #{$accent};
+  --border-color: #{color.change($primary-dark, $alpha: 0.1)};
+}
+
+[data-theme='dark'] {
+  --background: #{$primary-dark};
+  --background-alt: #{$primary};
+  --card-background: #{color.adjust($primary, $lightness: 5%)};
+  --text-primary: #{$text-light};
+  --text-secondary: #{color.change($text-light, $alpha: 0.7)};
+  --accent: #{$accent};
+  --border-color: #{color.change($text-light, $alpha: 0.1)};
+}
+
+/* Global styles */
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family-body;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--background);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  margin: 0;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+  @media (min-width: $tablet) {
+    font-size: 3.5rem;
+  }
+}
+
+h2 {
+  font-size: 2rem;
+  @media (min-width: $tablet) {
+    font-size: 2.5rem;
+  }
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+  transition: color $transition-speed $transition-ease;
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+/* Container styles */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+main {
+  margin-top: 70px;
+  min-height: calc(100vh - 70px - 60px);
+  padding: 2rem 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: $border-radius;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $transition-speed $transition-ease;
+  border: none;
+  
+  &.btn-primary {
+    background-color: $primary;
+    color: $text-light;
+    
+    &:hover {
+      background-color: color.adjust($primary, $lightness: 5%);
+    }
+  }
+  
+  &.btn-accent {
+    background-color: $accent;
+    color: $text-dark;
+    
+    &:hover {
+      background-color: color.adjust($accent, $lightness: 5%);
+    }
+  }
+  
+  &.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--text-primary);
+    
+    &:hover {
+      background-color: var(--text-primary);
+      color: var(--background);
+    }
+  }
+}
+
+/* Grid system */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -1rem;
+}
+
+.col {
+  padding: 0 1rem;
+  width: 100%;
+
+  @media (min-width: $tablet) {
+    &-6 {
+      width: 50%;
+    }
+
+    &-4 {
+      width: 33.333333%;
+    }
+
+    &-3 {
+      width: 25%;
+    }
+  }
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mb-3 {
+  margin-bottom: 3rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mt-3 {
+  margin-top: 3rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Responsive utilities */
+@media (max-width: $tablet) {
+  .container {
+    padding: 0 1.5rem;
+  }
+} 

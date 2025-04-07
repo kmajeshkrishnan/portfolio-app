@@ -1,0 +1,35 @@
+<div class="project1-container">
+  <h1>Image Processing Project</h1>
+  
+  <div class="upload-section">
+    <div class="file-input-wrapper">
+      <input 
+        type="file" 
+        accept="image/*" 
+        (change)="onFileSelected($event)"
+        class="file-input"
+        id="imageInput"
+      >
+      <label for="imageInput" class="file-label">
+        Choose Image
+      </label>
+    </div>
+
+    <button 
+      (click)="processImage()" 
+      [disabled]="!selectedFile || isLoading"
+      class="process-button"
+    >
+      {{ isLoading ? 'Processing...' : 'Process Image' }}
+    </button>
+  </div>
+
+  <div class="error-message" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <div class="image-display" *ngIf="processedImage">
+    <h2>Processed Image</h2>
+    <img [src]="processedImage" alt="Processed image" class="processed-image">
+  </div>
+</div> 

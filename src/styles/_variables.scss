@@ -1,0 +1,43 @@
+@use 'sass:color';
+
+// Colors
+$primary-dark: #0D1B2A;
+$primary: #1B263B;
+$primary-light: #415A77;
+$text-light: #E0E1DD;
+$accent: #F4D35E;
+$text-dark: #2C3E50;
+$text-muted: #6C7A89;
+$background-light: #F8F9FA;
+
+// Typography
+$font-family-heading: 'Poppins', sans-serif;
+$font-family-body: 'Inter', sans-serif;
+
+// Breakpoints
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 992px;
+$large-desktop: 1200px;
+
+// Layout
+$container-max-width: 1200px;
+$container-padding: 1rem;
+
+// Z-index
+$z-header: 1000;
+$z-modal: 1100;
+
+// Other
+$border-radius: 8px;
+$transition-speed: 0.3s;
+$transition-ease: ease-in-out;
+
+// Functions
+@function lighten-color($color, $percentage) {
+  @return color.adjust($color, $lightness: $percentage);
+}
+
+@function darken-color($color, $percentage) {
+  @return color.adjust($color, $lightness: -$percentage);
+} 

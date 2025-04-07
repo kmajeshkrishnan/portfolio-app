@@ -1,0 +1,107 @@
+@use '../../../styles/variables' as *;
+@use 'sass:color';
+
+.about {
+  padding: 5rem 0;
+  background-color: var(--background);
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    
+    @media (max-width: $tablet) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .bio {
+    h2 {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    p {
+      color: var(--text-primary);
+      line-height: 1.8;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .skills {
+    h2 {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .skill-tag {
+      background: var(--card-background);
+      color: var(--text-primary);
+      padding: 0.75rem 1.25rem;
+      border-radius: $border-radius;
+      font-size: 1rem;
+      transition: all $transition-speed $transition-ease;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 4px var(--border-color);
+
+      &:hover {
+        transform: translateY(-2px);
+        background: var(--accent);
+        color: $text-dark;
+        border-color: var(--accent);
+      }
+    }
+  }
+
+  @media (max-width: $tablet) {
+    padding: 3rem 0;
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .bio, .skills {
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .bio p {
+      font-size: 1rem;
+    }
+
+    .skills .skill-tag {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+} 

@@ -1,0 +1,42 @@
+@use '../../../styles/variables' as *;
+@use 'sass:color';
+
+.footer {
+  background: $primary-dark;
+  color: $text-light;
+  padding: 2rem 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .copyright {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1.5rem;
+
+    a {
+      color: $text-light;
+      transition: color $transition-speed $transition-ease;
+
+      &:hover {
+        color: $accent;
+      }
+    }
+  }
+
+  @media (max-width: $tablet) {
+    .container {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+} 

@@ -1,0 +1,29 @@
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <a routerLink="/">Your Name</a>
+    </div>
+    
+    <nav class="nav-menu" [class.active]="isMenuOpen">
+      <ul>
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+        <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+        <li><a routerLink="/portfolio" routerLinkActive="active">Portfolio</a></li>
+        <li><a routerLink="/resume" routerLinkActive="active">Resume</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="(isDarkTheme$ | async) ? 'Switch to light theme' : 'Switch to dark theme'">
+        <fa-icon [icon]="(isDarkTheme$ | async) ? faSun : faMoon"></fa-icon>
+      </button>
+      
+      <button class="menu-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header> 

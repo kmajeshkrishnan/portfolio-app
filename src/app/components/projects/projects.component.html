@@ -1,0 +1,17 @@
+<div class="projects-container">
+  <h1>My Projects</h1>
+  
+  <div class="projects-grid">
+    <div class="project-card" *ngFor="let project of projects">
+      <img [src]="project.image" [alt]="project.title" class="project-image">
+      <div class="project-content">
+        <h2>{{ project.title }}</h2>
+        <p>{{ project.description }}</p>
+        <div class="technologies">
+          <span *ngFor="let tech of project.technologies" class="tech-tag">{{ tech }}</span>
+        </div>
+        <a [routerLink]="project.liveUrl" class="view-button">View Live</a>
+      </div>
+    </div>
+  </div>
+</div> 
