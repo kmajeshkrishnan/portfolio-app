@@ -3,6 +3,13 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+interface ProcessImageResponse {
+  success: boolean;
+  image: string;
+  num_instances: number;
+  error?: string;
+}
+
 @Component({
   selector: 'app-project1',
   standalone: true,
@@ -56,7 +63,13 @@ import { FormsModule } from '@angular/forms';
         <div class="result-section" *ngIf="processedImageUrl">
           <h2>Processed Result</h2>
           <div class="result-card">
-            <img [src]="processedImageUrl" alt="Processed Image">
+            <img [src]="showBefore ? previewUrl : processedImageUrl" 
+                 alt="Processed Image"
+                 (error)="handleImageError($event)"
+                 class="result-image">
+            <div class="result-info" *ngIf="numInstances !== null">
+              <p>Number of instances detected: {{ numInstances }}</p>
+            </div>
             <div class="result-actions">
               <button class="download-btn" (click)="downloadImage()">
                 Download Result
@@ -242,29 +255,36 @@ import { FormsModule } from '@angular/forms';
         border-radius: 0.5rem;
         overflow: hidden;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
 
         img {
           width: 100%;
           height: auto;
           display: block;
+          margin-bottom: 1rem;
+        }
+
+        .result-info {
+          margin: 1rem 0;
+          color: var(--text-secondary);
         }
 
         .result-actions {
-          padding: 1rem;
           display: flex;
           gap: 1rem;
           justify-content: center;
+          margin-top: 1rem;
         }
       }
     }
 
     .error-message {
-      background-color: #ff4444;
-      color: white;
+      color: #ff4444;
+      background-color: rgba(255, 68, 68, 0.1);
       padding: 1rem;
       border-radius: 0.5rem;
-      text-align: center;
       margin-top: 1rem;
+      text-align: center;
       width: 100%;
       max-width: 600px;
     }
@@ -273,16 +293,14 @@ import { FormsModule } from '@angular/forms';
       display: inline-block;
       width: 20px;
       height: 20px;
-      border: 3px solid rgba(0, 0, 0, 0.3);
+      border: 3px solid rgba(255, 255, 255, 0.3);
       border-radius: 50%;
       border-top-color: #000000;
-      animation: spin 1s linear infinite;
+      animation: spin 1s ease-in-out infinite;
     }
 
     @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+      to { transform: rotate(360deg); }
     }
 
     @media (max-width: 768px) {
@@ -308,21 +326,25 @@ export class Project1Component {
   isDragover = false;
   errorMessage: string | null = null;
   showBefore = false;
+  numInstances: number | null = null;
 
   constructor(private http: HttpClient) {}
 
   onDragOver(event: DragEvent) {
     event.preventDefault();
+    event.stopPropagation();
     this.isDragover = true;
   }
 
   onDragLeave(event: DragEvent) {
     event.preventDefault();
+    event.stopPropagation();
     this.isDragover = false;
   }
 
   onDrop(event: DragEvent) {
     event.preventDefault();
+    event.stopPropagation();
     this.isDragover = false;
 
     const files = event.dataTransfer?.files;
@@ -338,25 +360,21 @@ export class Project1Component {
     }
   }
 
-  private handleFile(file: File) {
-    if (!this.isValidFile(file)) {
-      this.errorMessage = 'Please upload a valid image file (JPG, PNG) under 5MB';
+  handleFile(file: File) {
+    if (!file.type.match(/image\/(jpeg|png)/)) {
+      this.errorMessage = 'Please upload a valid image file (JPG or PNG)';
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      this.errorMessage = 'File size should be less than 5MB';
       return;
     }
 
     this.selectedFile = file;
     this.errorMessage = null;
-    this.createPreview(file);
-  }
-
-  private isValidFile(file: File): boolean {
-    const validTypes = ['image/jpeg', 'image/png'];
-    const maxSize = 5 * 1024 * 1024; // 5MB
-
-    return validTypes.includes(file.type) && file.size <= maxSize;
-  }
-
-  private createPreview(file: File) {
+    
+    // Create preview URL
     const reader = new FileReader();
     reader.onload = (e) => {
       this.previewUrl = e.target?.result as string;
@@ -368,6 +386,8 @@ export class Project1Component {
     this.selectedFile = null;
     this.previewUrl = null;
     this.processedImageUrl = null;
+    this.numInstances = null;
+    this.errorMessage = null;
   }
 
   async processImage() {
@@ -376,15 +396,47 @@ export class Project1Component {
     this.isProcessing = true;
     this.errorMessage = null;
 
-    const formData = new FormData();
-    formData.append('image', this.selectedFile);
-
     try {
-      const response = await this.http.post('http://localhost:8000/process-image', formData).toPromise();
-      this.processedImageUrl = (response as any).processed_image_url;
-    } catch (error) {
-      this.errorMessage = 'Failed to process image. Please try again.';
+      const formData = new FormData();
+      formData.append('file', this.selectedFile);
+
+      const response = await this.http.post<ProcessImageResponse>(
+        'http://localhost:8000/process-image',
+        formData,
+        {
+          headers: {
+            'Accept': 'application/json',
+          }
+        }
+      ).toPromise();
+      
+      if (response?.success) {
+        try {
+          // First decode the URL-encoded string
+          const decodedBase64 = response.image;
+          // Then create the data URL
+          this.processedImageUrl = `data:image/jpeg;base64,${decodedBase64}`;
+          this.numInstances = response.num_instances;
+        } catch (decodeError) {
+          console.error('Error decoding base64:', decodeError);
+          this.errorMessage = 'Error processing image data. Please try again.';
+        }
+      } else {
+        this.errorMessage = response?.error || 'Failed to process image';
+      }
+    } catch (error: any) {
       console.error('Error processing image:', error);
+      
+      if (error.status === 422) {
+        const errorDetail = error.error?.detail?.[0]?.msg || 'Invalid image format';
+        this.errorMessage = `Validation error: ${errorDetail}`;
+      } else if (error.status === 413) {
+        this.errorMessage = 'Image file is too large. Maximum size is 5MB.';
+      } else if (error.status === 0) {
+        this.errorMessage = 'Could not connect to the server. Please make sure the backend is running.';
+      } else {
+        this.errorMessage = 'An error occurred while processing the image. Please try again.';
+      }
     } finally {
       this.isProcessing = false;
     }
@@ -403,5 +455,11 @@ export class Project1Component {
 
   toggleBeforeAfter() {
     this.showBefore = !this.showBefore;
+  }
+
+  handleImageError(event: Event) {
+    const img = event.target as HTMLImageElement;
+    img.style.display = 'none';
+    this.errorMessage = 'Error loading processed image. Please try again.';
   }
 } 

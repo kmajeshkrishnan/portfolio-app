@@ -43,7 +43,7 @@
       display: inline-block;
       padding: 0.8rem 1.5rem;
       background-color: var(--accent);
-      color: #ffffff;
+      color: #000000;
       text-decoration: none;
       border-radius: 6px;
       font-weight: 500;
@@ -78,7 +78,7 @@
 
   .timeline-item {
     display: grid;
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 180px 1fr;
     gap: 2rem;
 
     .date {
@@ -123,7 +123,7 @@
 
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
 
     .skill-category {
@@ -162,7 +162,7 @@
       display: inline-block;
       padding: 1rem 2rem;
       background-color: var(--accent);
-      color: #ffffff;
+      color: #000000;
       text-decoration: none;
       border-radius: 6px;
       transition: all 0.3s ease;

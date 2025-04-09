@@ -6,6 +6,8 @@ $primary: #1B263B;
 $primary-light: #415A77;
 $text-light: #E0E1DD;
 $accent: #F4D35E;
+$accent-light: lighten-color($accent, 10%);
+$accent-dark: darken-color($accent, 10%);
 $text-dark: #2C3E50;
 $text-muted: #6C7A89;
 $background-light: #F8F9FA;

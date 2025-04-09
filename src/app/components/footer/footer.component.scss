@@ -26,9 +26,28 @@
     a {
       color: $text-light;
       transition: color $transition-speed $transition-ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: all $transition-speed $transition-ease;
+
+      fa-icon {
+        font-size: 1.2rem;
+        color: $text-light;
+        transition: color $transition-speed $transition-ease;
+      }
 
       &:hover {
-        color: $accent;
+        background-color: $accent;
+        transform: translateY(-3px);
+        
+        fa-icon {
+          color: $text-dark;
+        }
       }
     }
   }
