@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
-  imports: [RouterModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  standalone: true,
+  imports: [CommonModule, RouterModule]
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   isDarkTheme = true;
 
   constructor(private themeService: ThemeService) {}

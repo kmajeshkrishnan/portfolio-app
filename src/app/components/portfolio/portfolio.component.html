@@ -2,7 +2,8 @@
   <!-- Header Section -->
   <div class="header">
     <h2>Things I've Built</h2>
-    <p class="subtitle">A collection of projects showcasing my expertise in web development, AI, and creative problem-solving.</p>
+    <p class="subtitle">A collection of projects showcasing my expertise in web development, AI, and creative
+      problem-solving.</p>
   </div>
 
   <!-- Projects Grid -->
@@ -10,39 +11,31 @@
     <!-- Project 1 -->
     <div class="project-card">
       <div class="project-image">
-       <div class="project-image">
-      <!-- Add project image here -->
-    </div>
-        <div class="project-overlay">
-          <div class="project-links">
-            <a [routerLink]="['/project1']" class="project-link">
-              <i class="fas fa-external-link-alt"></i>
-              Live Demo
-            </a>
-            <a href="https://github.com/yourusername/project1" target="_blank" class="project-link">
-              <i class="fab fa-github"></i>
-              Code
-            </a>
-          </div>
+        <div class="project-image">
+          <img src="/assets/cs5.png" alt="Instance Segmentation">
         </div>
       </div>
       <div class="project-content">
-        <h3>AI Image Processing</h3>
-        <p>An intelligent system that enhances and transforms images using advanced AI algorithms.</p>
+        <h3>Image Instance Detector</h3>
+        <p>Master Thesis Project: An intelligent system that detects instances of objects in images using modified
+          CutLER model.</p>
         <div class="project-tags">
           <span class="tag">Python</span>
           <span class="tag">FastAPI</span>
-          <span class="tag">Angular</span>
-          <span class="tag">AI</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">Detectron2</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">Matplotlib</span>
         </div>
         <div class="project-links">
           <a [routerLink]="['/project1']" class="btn btn-primary">
             <i class="fas fa-external-link-alt"></i>
-            View Live
+            View
           </a>
-          <a href="https://github.com/yourusername/project1" target="_blank" class="btn btn-secondary">
-            <i class="fab fa-github"></i>
-            GitHub
+          <a href="https://github.com/kmajeshkrishnan/MasterThesis/blob/master/thesis_main.pdf" target="_blank"
+            class="btn btn-secondary">
+            <i class="fas fa-file-alt"></i>
+            Thesis
           </a>
         </div>
       </div>
@@ -51,34 +44,23 @@
     <!-- Project 2 -->
     <div class="project-card">
       <div class="project-image">
-        <div class="project-overlay">
-          <div class="project-links">
-            <a href="#" class="project-link">
-              <i class="fas fa-external-link-alt"></i>
-              Live Demo
-            </a>
-            <a href="https://github.com/yourusername/project2" target="_blank" class="project-link">
-              <i class="fab fa-github"></i>
-              Code
-            </a>
-          </div>
-        </div>
+        <img src="/assets/chatbot.svg" alt="AI Chatbot">
       </div>
       <div class="project-content">
-        <h3>Full Stack Platform</h3>
-        <p>A modern web application with real-time features and seamless user experience.</p>
+        <h3>AI Chat Bot</h3>
+        <p>A chatbot that made using RAG and OpenAI API to answer questions about me.</p>
         <div class="project-tags">
-          <span class="tag">Node.js</span>
-          <span class="tag">Express</span>
-          <span class="tag">React</span>
-          <span class="tag">MongoDB</span>
+          <span class="tag">Python</span>
+          <span class="tag">LightRAG</span>
+          <span class="tag">LLM</span>
+          <span class="tag">OpenAI API</span>
         </div>
         <div class="project-links">
-          <a href="#" class="btn btn-primary">
-            <i class="fas fa-external-link-alt"></i>
-            View Live
+          <a [routerLink]="['/chat']" class="btn btn-primary">
+            <i class="fas fa-comments"></i>
+            Chat
           </a>
-          <a href="https://github.com/yourusername/project2" target="_blank" class="btn btn-secondary">
+          <a href="https://github.com/kmajeshkrishnan/my_profile/tree/master/portfolio-backend" target="_blank" class="btn btn-secondary">
             <i class="fab fa-github"></i>
             GitHub
           </a>
@@ -89,36 +71,99 @@
     <!-- Project 3 -->
     <div class="project-card">
       <div class="project-image">
-        <div class="project-overlay">
-          <div class="project-links">
-            <a href="#" class="project-link">
-              <i class="fas fa-external-link-alt"></i>
-              Live Demo
-            </a>
-            <a href="https://github.com/yourusername/project3" target="_blank" class="project-link">
-              <i class="fab fa-github"></i>
-              Code
-            </a>
-          </div>
-        </div>
+        <img src="/assets/portfolio.svg" alt="Portfolio Website">
       </div>
       <div class="project-content">
-        <h3>Responsive Design System</h3>
-        <p>A comprehensive design system built for modern web applications.</p>
+        <h3>Portfolio Website</h3>
+        <p>A portfolio website built using Angular and FastAPI, which is the one you are currently on.</p>
         <div class="project-tags">
-          <span class="tag">HTML</span>
+          <span class="tag">Angular</span>
           <span class="tag">CSS</span>
-          <span class="tag">JavaScript</span>
+          <span class="tag">HTML</span>
+          <span class="tag">FastAPI</span>
           <span class="tag">Responsive</span>
+          <span class="tag">Docker</span>
         </div>
         <div class="project-links">
           <a href="#" class="btn btn-primary">
             <i class="fas fa-external-link-alt"></i>
-            View Live
+            View
           </a>
-          <a href="https://github.com/yourusername/project3" target="_blank" class="btn btn-secondary">
+          <a href="https://github.com/kmajeshkrishnan/my_profile" target="_blank" class="btn btn-secondary">
             <i class="fab fa-github"></i>
             GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image">
+        <img src="/assets/freicar.png" alt="Freicar">
+      </div>
+      <div class="project-content">
+        <h3>Freicar</h3>
+        <p>Worked as a team of four to design and implement integral parts of an autonomous car including perception,
+          detection and control and participated in the racing competition (Repository is private due to legal reasons).</p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">C++</span>
+          <span class="tag">ROS</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">Pytorch</span>
+        </div>
+        <div class="project-links">
+          <a href="http://freicar.informatik.uni-freiburg.de/" class="btn btn-primary" target="_blank">
+            <i class="fas fa-external-link-alt"></i>
+            Project
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image">
+      </div>
+      <div class="project-content">
+        <h3>Cross Domain Generalization of AutoFormer</h3>
+        <p>In a group of 3, explored the Autoformer performance on Image Classification, Image Super-Resolution and (Masked) Language Modeling</p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Pytorch</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">AutoFormer</span>
+        </div>
+        <div class="project-links">
+          <a href="https://drive.google.com/file/d/1DqKkLwWOLX5gZtfuyd7lCyoBqHekosAF/view?usp=drive_link" class="btn btn-primary" target="_blank">
+            <i class="fas fa-external-link-alt"></i>
+            Poster
+          </a>
+          <a href="https://github.com/ayushi-3536/AutoFormer" target="_blank" class="btn btn-secondary">
+            <i class="fab fa-github"></i>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image">
+        <img src="/assets/nssce.png" alt="NSSCE">
+      </div>
+      <div class="project-content">
+        <h3>NSSCE: Android App</h3>
+        <p>Developed an official android application for my college (Not in play store at the moment due to legal reasons).</p>
+        <div class="project-tags">
+          <span class="tag">Android Studio</span>
+          <span class="tag">Java</span>
+          <span class="tag">XML</span>
+          <span class="tag">Firebase</span>
+          <span class="tag">SQLite</span>
+        </div>
+        <div class="project-links">
+          <a href="https://apkpure.com/nssce/com.tricodia.NSSCE" class="btn btn-primary" target="_blank">
+            <i class="fas fa-external-link-alt"></i>
+            Download
           </a>
         </div>
       </div>

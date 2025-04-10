@@ -3,16 +3,6 @@
 
 /* Theme Variables */
 :root {
-  --background: #{$background-light};
-  --background-alt: white;
-  --card-background: white;
-  --text-primary: #{$text-dark};
-  --text-secondary: #{$text-muted};
-  --accent: #{$accent};
-  --border-color: #{color.change($primary-dark, $alpha: 0.1)};
-}
-
-[data-theme='dark'] {
   --background: #{$primary-dark};
   --background-alt: #{$primary};
   --card-background: #{color.adjust($primary, $lightness: 5%)};
@@ -20,6 +10,16 @@
   --text-secondary: #{color.change($text-light, $alpha: 0.7)};
   --accent: #{$accent};
   --border-color: #{color.change($text-light, $alpha: 0.1)};
+}
+
+[data-theme='light'] {
+  --background: #{$background-light};
+  --background-alt: white;
+  --card-background: white;
+  --text-primary: #{$text-dark};
+  --text-secondary: #{$text-muted};
+  --accent: #{$accent};
+  --border-color: #{color.change($primary-dark, $alpha: 0.1)};
 }
 
 /* Global styles */

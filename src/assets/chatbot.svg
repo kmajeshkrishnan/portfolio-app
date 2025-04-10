@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="200" cy="200" r="180" fill="#2A2D3E"/>
+  
+  <!-- Chat Bubble -->
+  <path d="M120 140C120 128.954 128.954 120 140 120H260C271.046 120 280 128.954 280 140V220C280 231.046 271.046 240 260 240H220L200 260L180 240H140C128.954 240 120 231.046 120 220V140Z" fill="#6C63FF"/>
+  
+  <!-- AI Circuit Pattern -->
+  <path d="M160 160H240M160 180H200M160 200H220" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Dots representing AI processing -->
+  <circle cx="180" cy="180" r="4" fill="white"/>
+  <circle cx="220" cy="180" r="4" fill="white"/>
+  <circle cx="200" cy="200" r="4" fill="white"/>
+</svg> 
