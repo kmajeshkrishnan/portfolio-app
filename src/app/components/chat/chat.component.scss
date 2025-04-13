@@ -1,7 +1,7 @@
 .chat-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   height: calc(100vh - 120px);
   display: flex;
   flex-direction: column;
@@ -149,13 +149,12 @@
   margin-top: auto;
 
   form {
-    display: flex;
-    gap: 1rem;
+    width: 100%;
   }
 
   .input-wrapper {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     width: 100%;
     background: var(--card-background);
     border-radius: 8px;
@@ -164,6 +163,7 @@
 
     input {
       flex: 1;
+      min-width: 0;
       padding: 0.8rem;
       border: none;
       background: transparent;
@@ -181,7 +181,7 @@
     }
 
     .send-button {
-      padding: 0.8rem 1.5rem;
+      padding: 0.8rem;
       background: var(--accent);
       color: white;
       border: none;
@@ -192,6 +192,8 @@
       align-items: center;
       gap: 0.5rem;
       font-weight: 500;
+      white-space: nowrap;
+      min-width: fit-content;
 
       &:hover:not(:disabled) {
         background: var(--accent-hover);
@@ -306,5 +308,56 @@
   }
   30% {
     transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .chat-container {
+    padding: 0.5rem;
+    height: calc(100vh - 100px);
+  }
+
+  .chat-header {
+    margin-bottom: 1rem;
+
+    h2 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  .input-container {
+    padding: 0.5rem;
+
+    .input-wrapper {
+      padding: 0.3rem;
+      gap: 0.3rem;
+
+      input {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+      }
+
+      .send-button {
+        padding: 0.6rem;
+        
+        .button-text {
+          display: none;
+        }
+
+        i {
+          font-size: 1rem;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .message {
+    max-width: 90%;
+    padding: 0.8rem;
   }
 } 

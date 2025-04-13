@@ -100,7 +100,7 @@
 
     .contact-options {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
       margin-top: 2rem;
 
@@ -114,6 +114,8 @@
         text-decoration: none;
         transition: all 0.3s ease;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        width: 100%;
+        box-sizing: border-box;
 
         &:hover {
           transform: translateY(-5px);
@@ -124,6 +126,7 @@
         .icon {
           width: 50px;
           height: 50px;
+          min-width: 50px;
           border-radius: 50%;
           background-color: rgba(var(--accent-rgb), 0.1);
           display: flex;
@@ -140,16 +143,26 @@
         }
 
         .info {
+          flex: 1;
+          min-width: 0;
+          overflow: hidden;
+
           h3 {
             color: var(--text-primary);
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
 
           p {
             color: var(--text-secondary);
             margin: 0;
             font-size: 1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
         }
       }
@@ -158,23 +171,104 @@
 }
 
 // Responsive styles
-@media (max-width: $tablet) {
+@media (max-width: 768px) {
   .contact {
     padding: 4rem 0;
 
-    .contact-content {
-      padding: 2rem;
+    .container {
+      padding: 0 1rem;
+    }
 
-      h1 {
-        font-size: 2.2rem;
-      }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-content {
+      padding: 1.5rem;
+      margin: 0 1rem;
 
       h2 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
       }
 
       .contact-options {
         grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1.5rem;
+
+        .contact-option {
+          padding: 1rem;
+
+          .icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            margin-right: 1rem;
+
+            fa-icon {
+              font-size: 1.2rem;
+            }
+          }
+
+          .info {
+            h3 {
+              font-size: 1.1rem;
+            }
+
+            p {
+              font-size: 0.9rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 3rem 0;
+
+    h1 {
+      font-size: 1.8rem;
+    }
+
+    .contact-content {
+      padding: 1rem;
+      margin: 0 0.5rem;
+
+      .contact-options {
+        .contact-option {
+          padding: 0.8rem;
+
+          .icon {
+            width: 35px;
+            height: 35px;
+            min-width: 35px;
+            margin-right: 0.8rem;
+
+            fa-icon {
+              font-size: 1rem;
+            }
+          }
+
+          .info {
+            h3 {
+              font-size: 1rem;
+            }
+
+            p {
+              font-size: 0.85rem;
+            }
+          }
+        }
       }
     }
   }

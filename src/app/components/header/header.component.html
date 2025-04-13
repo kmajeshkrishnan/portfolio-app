@@ -1,12 +1,15 @@
 <header class="header">
   <div class="container">
     <a routerLink="/" class="logo">Ajesh's Portfolio</a>
-    <nav class="nav">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-      <a routerLink="/about" routerLinkActive="active">About</a>
-      <a routerLink="/portfolio" routerLinkActive="active">Portfolio</a>
-      <a routerLink="/resume" routerLinkActive="active">Resume</a>
-      <a routerLink="/contact" routerLinkActive="active">Contact</a>
+    <button class="mobile-menu-btn" (click)="toggleMobileMenu()">
+      <span class="hamburger"></span>
+    </button>
+    <nav class="nav" [class.mobile-open]="isMobileMenuOpen">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()">Home</a>
+      <a routerLink="/about" routerLinkActive="active" (click)="closeMobileMenu()">About</a>
+      <a routerLink="/portfolio" routerLinkActive="active" (click)="closeMobileMenu()">Portfolio</a>
+      <a routerLink="/resume" routerLinkActive="active" (click)="closeMobileMenu()">Resume</a>
+      <a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()">Contact</a>
     </nav>
     <button class="theme-toggle" (click)="toggleTheme()">
       {{ isDarkTheme ? '☀️' : '🌙' }}
