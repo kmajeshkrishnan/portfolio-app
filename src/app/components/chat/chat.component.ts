@@ -27,6 +27,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   newMessage: string = '';
   loading: boolean = false;
   errorMessage: string | null = null;
+  private apiUrl: string = '/api/rag-query'; // Use relative URL that will be proxied by Nginx
 
   constructor(private http: HttpClient) {}
 
@@ -61,7 +62,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       await new Promise(resolve => setTimeout(resolve, 500));
       
       const response = await firstValueFrom(
-        this.http.post<RagResponse>('http://localhost:8000/rag-query', {
+        this.http.post<RagResponse>(this.apiUrl, {
           query: userMessage
         })
       );

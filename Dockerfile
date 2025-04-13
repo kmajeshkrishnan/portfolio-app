@@ -18,5 +18,5 @@ RUN npm run build
 # Expose port
 EXPOSE 4200
 
-# Run the application
-CMD ["npm", "start", "--", "--host", "0.0.0.0"] 
+# Run the application with host check disabled
+CMD ["npm", "start", "--", "--host", "0.0.0.0", "--disable-host-check"] 

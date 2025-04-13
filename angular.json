@@ -72,7 +72,10 @@
               "buildTarget": "portfolio-app:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "allowedHosts": ["ajeshkrishnan.com", "www.ajeshkrishnan.com", "localhost"]
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"

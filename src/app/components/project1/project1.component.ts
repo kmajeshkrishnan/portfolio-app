@@ -26,6 +26,7 @@ export class Project1Component {
   errorMessage: string | null = null;
   showBefore = false;
   numInstances: number | null = null;
+  private apiUrl: string = '/api/process-image'; 
 
   constructor(private http: HttpClient) {}
 
@@ -100,7 +101,7 @@ export class Project1Component {
       formData.append('file', this.selectedFile);
 
       const response = await this.http.post<ProcessImageResponse>(
-        'http://localhost:8000/process-image',
+        this.apiUrl,
         formData,
         {
           headers: {

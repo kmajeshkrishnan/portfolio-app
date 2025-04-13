@@ -16,8 +16,30 @@
   h1 {
     color: var(--text-primary);
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     font-size: 2.5rem;
+  }
+
+  .contact-info {
+    text-align: center;
+    margin-bottom: 2rem;
+    
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.6;
+      
+      a {
+        color: var(--accent);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        
+        &:hover {
+          color: var(--accent-hover);
+          text-decoration: underline;
+        }
+      }
+    }
   }
 
   .resume-content {
@@ -86,6 +108,17 @@
       color: var(--accent);
       font-weight: 600;
       word-break: break-word;
+      
+      a {
+        color: var(--accent);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        
+        &:hover {
+          color: var(--accent-hover);
+          text-decoration: underline;
+        }
+      }
     }
 
     .content {
@@ -163,6 +196,13 @@
     text-align: center;
     margin-top: 3rem;
 
+    .last-updated {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
     .btn {
       display: inline-block;
       padding: 1rem 2rem;
@@ -190,8 +230,24 @@
 
     h1 {
       font-size: 1.8rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       padding: 0 1rem;
+    }
+
+    .contact-info {
+      margin-bottom: 1.5rem;
+      padding: 0 1rem;
+      
+      p {
+        font-size: 0.9rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        
+        a {
+          display: inline-block;
+        }
+      }
     }
 
     .resume-content {
@@ -248,15 +304,6 @@
         ul li {
           font-size: 0.9rem;
         }
-      }
-    }
-
-    .download-section {
-      margin-top: 2rem;
-
-      .btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
       }
     }
   }
