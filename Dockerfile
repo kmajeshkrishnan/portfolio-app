@@ -18,5 +18,6 @@ RUN npm run build
 # Expose port
 EXPOSE 4200
 
-# Run the application with host check disabled
-CMD ["npm", "start", "--", "--host", "0.0.0.0", "--disable-host-check"] 
+# Use http-server to serve the built files (no watch mode)
+RUN npm install -g http-server
+CMD ["http-server", "dist/portfolio-app/browser", "-p", "4200", "-f", "index.html"] 

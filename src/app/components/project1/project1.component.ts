@@ -66,8 +66,11 @@ export class Project1Component {
       return;
     }
 
-    if (file.size > 5 * 1024 * 1024) {
-      this.errorMessage = 'File size should be less than 5MB';
+    const maxSizeInBytes = 5 * 1024 * 1024; // 5MB in bytes
+    const fileSizeInMB = (file.size / (1024 * 1024)).toFixed(2);
+
+    if (file.size > maxSizeInBytes) {
+      this.errorMessage = `File size (${fileSizeInMB}MB) exceeds the maximum limit of 5MB`;
       return;
     }
 
