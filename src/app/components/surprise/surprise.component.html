@@ -1,0 +1,63 @@
+<div class="page">
+  <div *ngIf="!showMainContent" class="countdown">{{ countdownText }}</div>
+
+  <div *ngIf="showMainContent" class="content-box" #contentBox>
+    <div class="sound-indicator">🔊 Turn up your sound!</div>
+    <img 
+      [src]="accepted ? 'assets/us.jpg' : 'assets/motmoto.jpg'" 
+      alt="Personal Photo" 
+      class="photo"
+      [class.zoom-effect]="accepted" 
+    />
+    <h1 *ngIf="!accepted" class="question">Can you be my Valentine?</h1>
+    <h1 *ngIf="accepted" class="question finale">{{ finalHeadline }}</h1>
+    <p *ngIf="accepted" class="personal-message">{{ personalMessage }}</p>
+    <a *ngIf="accepted && giftLink" class="gift-link" [routerLink]="giftLink">
+      Claim your valentines day gift
+    </a>
+
+    <div *ngIf="!accepted" class="button-row">
+      <div class="yes-anchor">
+        <button
+          #yesButton
+          class="yes-button"
+          [class.is-absolute]="yesButtonAbsolute"
+          [class.is-finale]="finaleMode"
+          [ngStyle]="yesButtonStyles"
+          type="button"
+          (click)="onYesClick($event)"
+        >
+          YES
+        </button>
+        <div *ngIf="anchorText" class="yes-anchor-text">{{ anchorText }}</div>
+      </div>
+      <button
+        class="no-button"
+        type="button"
+        [style.backgroundColor]="noButtonColor"
+        [ngStyle]="noButtonStyles"
+        [class.is-disguised]="noButtonDisguised"
+        [class.is-hidden]="noButtonHidden"
+        (mouseover)="onNoMouseOver()"
+        (mouseleave)="onNoMouseLeave()"
+        (click)="onNoClick()"
+      >
+        {{ noButtonText }}
+        <span *ngIf="noButtonNote" class="no-note">{{ noButtonNote }}</span>
+      </button>
+    </div>
+
+    <p *ngIf="noClickMessage" class="no-final-message">{{ noClickMessage }}</p>
+
+    <div *ngIf="poofVisible" class="poof" [ngStyle]="poofStyles">POOF!</div>
+  </div>
+</div>
+
+<div *ngIf="showCelebration" class="celebration">
+  <span
+    *ngFor="let item of celebrationItems"
+    class="celebration-item"
+    [ngStyle]="item.style"
+    >{{ item.symbol }}</span
+  >
+</div>

@@ -1,32 +1,10 @@
 <!-- Header -->
-<app-header></app-header>
+<app-header *ngIf="!hideChrome"></app-header>
 
 <!-- Main Content -->
-<main>
+<main [class.surprise-mode]="hideChrome">
   <router-outlet></router-outlet>
 </main>
 
 <!-- Footer -->
-<app-footer></app-footer>
-
-<style>
-  :host {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-
-  main {
-    flex: 1;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 6rem 1rem 2rem;
-  }
-
-  @media (max-width: 768px) {
-    main {
-      padding: 5rem 1rem 1rem;
-    }
-  }
-</style> 
+<app-footer *ngIf="!hideChrome"></app-footer>

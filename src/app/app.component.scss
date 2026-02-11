@@ -17,8 +17,19 @@ main {
   padding-top: 60px;
 }
 
+main.surprise-mode {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
 @media (max-width: $tablet) {
   main {
     padding: 1rem;
+  }
+
+  main.surprise-mode {
+    padding: 0;
   }
 } 

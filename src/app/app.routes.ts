@@ -6,6 +6,8 @@ import { ResumeComponent } from './components/resume/resume.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { Project1Component } from './components/project1/project1.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { SurpriseComponent } from './components/surprise/surprise.component';
+import { GiftComponent } from './components/gift/gift.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,5 +17,7 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'project1', component: Project1Component },
   { path: 'chat', component: ChatComponent },
+  { path: 'surprise', component: SurpriseComponent },
+  { path: 'gift', component: GiftComponent },
   { path: '**', redirectTo: '' }
 ]; 
