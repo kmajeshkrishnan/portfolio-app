@@ -48,6 +48,17 @@ export class SurpriseComponent implements OnInit, OnDestroy {
   private noHoverCount = 0;
   private noHoverLockedUntil = 0;
   private noResetTimeoutId: number | undefined;
+  private userInteracted = false;
+  private pendingMusicStart = false;
+
+  private readonly handleFirstInteraction = () => {
+    this.userInteracted = true;
+
+    if (this.showMainContent || this.pendingMusicStart) {
+      this.startBackgroundMusic();
+      this.pendingMusicStart = false;
+    }
+  };
 
 private readonly warningLines = [
   'Warning: Emotional availability may require a system reboot.',
@@ -72,6 +83,7 @@ private readonly warningLines = [
   ngOnInit(): void {
     this.updateCountdown();
     this.countdownIntervalId = window.setInterval(() => this.updateCountdown(), 1000);
+    window.addEventListener('pointerdown', this.handleFirstInteraction, { once: true });
   }
 
   private startBackgroundMusic(): void {
@@ -118,6 +130,7 @@ private readonly warningLines = [
     if (this.noResetTimeoutId !== undefined) {
       clearTimeout(this.noResetTimeoutId);
     }
+    window.removeEventListener('pointerdown', this.handleFirstInteraction);
     this.stopBackgroundMusic();
     if (this.celebrationMusic) {
       this.celebrationMusic.pause();
@@ -225,7 +238,7 @@ private readonly warningLines = [
     if (distance <= 0) {
       this.showMainContent = true;
       this.countdownText = '';
-      this.startBackgroundMusic();
+      this.requestBackgroundMusic();
 
       if (this.countdownIntervalId !== undefined) {
         clearInterval(this.countdownIntervalId);
@@ -239,6 +252,15 @@ private readonly warningLines = [
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     this.countdownText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  private requestBackgroundMusic(): void {
+    if (this.userInteracted) {
+      this.startBackgroundMusic();
+      return;
+    }
+
+    this.pendingMusicStart = true;
   }
 
   private startChase(event: MouseEvent): void {
